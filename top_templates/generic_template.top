@@ -1,0 +1,48 @@
+;
+;	File 'topol.top' was generated
+;	By user: hartmaec (7122)
+;	On host: rh05659.villa-bosch.de
+;	At date: Thu May  2 15:48:43 2024
+;
+;	This is a standalone topology file
+;
+;	Created by:
+;	                    :-) GROMACS - gmx pdb2gmx, 2022.5 (-:
+;	
+;	Executable:   /sw/mbm/hartmaec/gromacs-2022.5_ws/run/bin/gmx
+;	Data prefix:  /sw/mbm/hartmaec/gromacs-2022.5_ws/run
+;	Working dir:  /hits/fast/mbm/hartmaec/workdir/FF99SBILDNPX_OpenMM/test_ff/A
+;	Command line:
+;	  gmx pdb2gmx -f pep.pdb
+;	Force field was read from current directory or a relative path - path added.
+;
+
+; Include forcefield parameters
+#include "../XX/forcefield.itp"
+
+[ moleculetype ]
+; Name            nrexcl
+Protein_chain_X     2
+
+[ atoms ]
+     1         HC      1    ACE   HH31      1     0.1123      1.008
+
+[ bonds ]
+
+[ pairs ]
+
+[ angles ]
+
+[ dihedrals ]
+
+; Include water and ions
+#include "../XX/tip3p.itp"
+#include "../XX/ions.itp"
+
+[ system ]
+; Name
+Protein in water
+
+[ molecules ]
+; Compound        #mols
+Protein_chain_X     1

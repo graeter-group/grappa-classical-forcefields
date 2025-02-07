@@ -1,0 +1,39 @@
+[ bondtypes ]
+; i    j  func       b0          kb
+  OW HW         1    0.09572   462750.4 ; P water
+  HW HW         1    0.15136   462750.4 ; P water
+#include "ffbonded_bondtypes.itp"
+
+[ constrainttypes ]
+; this section is implemented manually from bond & angle values
+
+; constraints for rigid CH3 groups
+ MCH3   CT      2    0.166426
+ MCH3   S       2    0.193875
+ MCH3   MCH3    2    0.092163
+; constraints for rigid NH3 groups
+ MNH3   CT      2    0.158254
+ MNH3   MNH3    2    0.080229
+
+; angle-derived constraints for OH and SH groups in proteins
+; The constraint A-C is calculated from the angle A-B-C and bonds A-B, B-C.
+  C     HO      2    0.195074
+  CA    HO      2    0.195074
+  CT    HO      2    0.194132
+  CT    HS      2    0.235935
+
+
+
+[ angletypes ]
+;  i    j    k  func       th0       cth
+HW  OW  HW           1   104.520    836.800 ; TIP3P water
+HW  HW  OW           1   127.740      0.000 ; (found in crystallographic water with 3 bonds)
+#include "ffbonded_angletypes.itp"
+
+[ dihedraltypes ]
+;i  j   k  l	 func      phase      kd      pn
+#include "ffbonded_dihedraltypes_improper.itp"
+
+[ dihedraltypes ]
+;i   j   k   l	   func	
+ #include "ffbonded_dihedraltypes_proper.itp"
